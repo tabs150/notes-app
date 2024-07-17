@@ -10,7 +10,7 @@ import NoteForm from './components/NoteForm'
 
 
 const App = () => {
-  
+
   const [notes, setNotes] = useState(null)
   const [showAll, setShowAll] = useState(true)
   const [errorMessage, setErrorMessage] = useState(null)
@@ -22,7 +22,7 @@ const App = () => {
 
   useEffect(() => {
     const nonExisting = {
-      id: "10000",
+      id: '10000',
       content: 'This note is not saved to server',
       important: true,
     }
@@ -41,7 +41,7 @@ const App = () => {
       noteService.setToken(user.token)
     }
   }, [])
-  
+
 
   if (!notes) {
     return null
@@ -78,7 +78,7 @@ const App = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault()
-    
+
     try {
       const user = await loginService.login({
         username, password
@@ -129,11 +129,11 @@ const App = () => {
       <Notification message={errorMessage} />
       {!user && loginForm()}
       {user && <div>
-          <p>{user.name} logged-in</p>
-          <Togglable buttonLabel='new note' ref={noteFormRef}>
-            <NoteForm createNote={addNote} />
-          </Togglable>
-        </div>
+        <p>{user.name} logged-in</p>
+        <Togglable buttonLabel='new note' ref={noteFormRef}>
+          <NoteForm createNote={addNote} />
+        </Togglable>
+      </div>
       }
       <div>
         <button onClick={() => setShowAll(!showAll)}>
@@ -141,18 +141,18 @@ const App = () => {
         </button>
       </div>
       <ul>
-        {notesToShow.map(note => 
-          <Note 
-            key={note.id} 
+        {notesToShow.map(note =>
+          <Note
+            key={note.id}
             note={note}
             toggleImportance={() => toggleImportanceOf(note.id)}
           />
         )}
       </ul>
-      
+
       <Footer />
     </div>
   )
 }
 
-export default App 
+export default App
