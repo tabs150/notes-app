@@ -21,11 +21,6 @@ const App = () => {
   const noteFormRef = useRef()
 
   useEffect(() => {
-    const nonExisting = {
-      id: '10000',
-      content: 'This note is not saved to server',
-      important: true,
-    }
     noteService
       .getAll()
       .then(initialNotes => {
