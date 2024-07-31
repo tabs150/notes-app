@@ -24,7 +24,7 @@ const App = () => {
     noteService
       .getAll()
       .then(initialNotes => {
-        setNotes(initialNotes.concat(nonExisting))
+        setNotes(initialNotes)
       })
   }, [])
 
